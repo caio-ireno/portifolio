@@ -42,6 +42,18 @@ export default function AboutSkills() {
           url="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg"
         />
         <CardSkill
+          name="Chakra"
+          url="https://media.graphassets.com/91q3gAEGSh6HCrpnPgxS"
+        />
+        <CardSkill
+          name="Material UI"
+          url="https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/materialui/materialui-plain.svg"
+        />
+        <CardSkill
+          name="Tailwindcss"
+          url="https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/tailwindcss/tailwindcss-original-wordmark.svg"
+        />
+        <CardSkill
           name="GitHub"
           url="https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg"
         />

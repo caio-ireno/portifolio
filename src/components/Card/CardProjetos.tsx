@@ -1,67 +1,78 @@
-import { Typography } from '@mui/material';
+import { Link, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import CardSkill from './CardSkill';
+import theme from '../../utils/Theme';
 
-interface CardProjectProps {
-  nameProject: string;
-  img: string;
-  skill1: {
-    name: string;
-    url: string;
-  };
-  skill2: {
-    name: string;
-    url: string;
-  };
-  skill3: {
-    name: string;
-    url: string;
-  };
+interface CardProjetosProps {
+  name: string | null;
+  url: string;
+  language: string;
+  description: string;
 }
 
-export default function CardProjetos(props: CardProjectProps) {
+export default function CardProjetos(props: CardProjetosProps) {
   return (
     <Box
-      display={'flex'}
-      sx={{
-        backgroundColor: 'secondary.dark',
-      }}
-      borderRadius="10px"
+      sx={{ backgroundColor: 'secondary.light' }}
+      width={{ xs: '350px', sm: '600px' }}
+      mx="10px"
+      borderRadius={'10px'}
     >
       <Box
-        display={{ xs: 'none', md: 'flex' }}
-        component="img"
-        src={props.img}
-        borderRadius="10px 0 0 10px"
-        alt="men working"
-        width={{ xs: '10vh', md: '30vh' }}
-        height={{ xs: '10vh', md: '30vh' }}
-      />
-      <Box
+        gap={{ xs: '50px', sm: '80px' }}
+        justifyContent={'center'}
+        alignItems="center"
         display="flex"
-        flexDirection={'column'}
-        justifyContent="center"
-        // alignItems={'center'}
-        marginLeft={'20px'}
-        marginRight={'20px'}
-        gap="5px"
+        flexDirection={'row'}
+        p="20px"
       >
-        <Typography variant="h3" mb="50px">
-          {props.nameProject}
-        </Typography>
+        <Link
+          fontSize={{ xs: '24px', sm: '32px', md: '48px' }}
+          sx={{
+            textDecoration: 'none',
+            color: 'white',
+            '&:hover': {
+              color: 'transparent',
+              backgroundClip: 'text',
+              backgroundImage:
+                'linear-gradient(19deg, #21D4FD 0%, #B721FF 100%)',
+            },
 
-        <Box
-          display="flex"
-          flexWrap={'wrap'}
-          justifyContent="center"
-          alignItems={'center'}
-          gap="5px"
+            fontWeight: '700',
+          }}
+          href={props.url}
+          target="_blank"
         >
-          <CardSkill name={props.skill1.name} url={props.skill1.url} />
-          <CardSkill name={props.skill2.name} url={props.skill2.url} />
-          <CardSkill name={props.skill3.name} url={props.skill3.url} />
-        </Box>
+          {props.name}
+        </Link>
+
+        <Typography
+          fontSize={{ xs: '24px', sm: '32px', md: '48px' }}
+          sx={{
+            color: 'transparent',
+            backgroundClip: 'text',
+            backgroundImage:
+              'linear-gradient(19deg, #21D4FD 50%, #B721FF 100%)',
+
+            fontWeight: '800',
+            padding: '20px',
+            borderRadius: '10px',
+          }}
+        >
+          {props.language}
+        </Typography>
       </Box>
+
+      <Typography
+        justifyContent={'center'}
+        alignItems="center"
+        display="flex"
+        p="20px"
+        variant="h6"
+        textAlign={'center'}
+        sx={{ color: theme.palette.secondary.contrastText }}
+      >
+        {props.description}
+      </Typography>
     </Box>
   );
 }
