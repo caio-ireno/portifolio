@@ -22,4 +22,4 @@ jobs:
         with:
           node-version: 16
       - run: npm install && npm install --only=dev
-      - run: npm build
+      - run: npm run build
