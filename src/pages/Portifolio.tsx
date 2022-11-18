@@ -8,16 +8,14 @@ interface GitProps {
   html_url: string;
   language: string;
   description: string;
-  languages_url: {
-    l1: number;
-    l2: number;
-    l3: number;
-  };
+  topics: [];
 }
 export default function Portifolio() {
   const [users, setUsers] = useState<GitProps[]>([]);
   useEffect(() => {
-    api.get('/users/caio-ireno/repos').then((r) => setUsers(r.data));
+    api.get('/users/caio-ireno/repos').then((r) => {
+      setUsers(r.data);
+    });
   }, []);
 
   return (
@@ -37,6 +35,7 @@ export default function Portifolio() {
           url={user.html_url}
           language={user.language}
           description={user.description}
+          topics={user.topics}
         />
       ))}
     </Box>

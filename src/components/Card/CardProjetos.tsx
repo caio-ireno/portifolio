@@ -7,6 +7,7 @@ interface CardProjetosProps {
   url: string;
   language: string;
   description: string;
+  topics: [];
 }
 
 export default function CardProjetos(props: CardProjetosProps) {
@@ -45,21 +46,28 @@ export default function CardProjetos(props: CardProjetosProps) {
           {props.name}
         </Link>
 
-        <Typography
-          fontSize={{ xs: '24px', sm: '32px', md: '48px' }}
-          sx={{
-            color: 'transparent',
-            backgroundClip: 'text',
-            backgroundImage:
-              'linear-gradient(19deg, #21D4FD 50%, #B721FF 100%)',
-
-            fontWeight: '800',
-            padding: '20px',
-            borderRadius: '10px',
-          }}
+        <Box
+          justifyContent={'center'}
+          alignItems="center"
+          display="flex"
+          flexDirection={'column'}
         >
-          {props.language}
-        </Typography>
+          {props.topics.map((t) => (
+            <Typography
+              sx={{
+                color: 'transparent',
+                backgroundClip: 'text',
+                backgroundImage:
+                  'linear-gradient(19deg, #21D4FD 50%, #B721FF 100%)',
+
+                fontWeight: '800',
+              }}
+              fontSize={{ xs: '16px', sm: '24px', md: '32px' }}
+            >
+              {t}
+            </Typography>
+          ))}
+        </Box>
       </Box>
 
       <Typography
