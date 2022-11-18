@@ -23,3 +23,10 @@ jobs:
           node-version: 16
       - run: npm install && npm install --only=dev
       - run: npm run build
+
+    - name: deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          publish_dir: ./build
+          publish_branch: gh-pages
