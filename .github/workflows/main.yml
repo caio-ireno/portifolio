@@ -36,7 +36,13 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-          cmd: npm install --only=prodution && npm run build
+          cmd: npm install --only=prodution
+
+      - name: npm build
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cmd: npm run build
 
       - name: deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
