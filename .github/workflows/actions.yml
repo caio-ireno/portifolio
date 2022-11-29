@@ -6,9 +6,9 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -33,17 +33,14 @@ jobs:
           path: node_modules
 
       - name: npm install
-        uses: actions/checkout@v3
         uses: actions/setup-node@v3
         with:
           node-version: 16
-          cmd: npm install
-          cmd: npm run build
-          
+          cmd: npm install --only=prodution && npm run build
+
       - name: deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           publish_dir: ./build
           publish_branch: gh-pages
-          
